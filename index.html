@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Practice Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-container" class="card">
+        <h2>QA Shop Giriş</h2>
+        <p class="hint">Test Kullanıcı: <b>standard_user</b> / Şifre: <b>secret_sauce</b></p>
+        <input type="text" id="username" data-test="username" placeholder="Kullanıcı Adı">
+        <input type="password" id="password" data-test="password" placeholder="Şifre">
+        <button id="login-button" data-test="login-button" onclick="login()">Giriş Yap</button>
+        <p id="error-message" data-test="error" class="error hidden"></p>
+    </div>
+
+    <div id="inventory-container" class="hidden">
+        <header>
+            <h2>Ürün Kataloğu</h2>
+            <div>
+                <span>Sepet: <strong id="cart-count" data-test="cart-count">0</strong></span>
+                <button id="checkout-nav-btn" data-test="checkout-nav" onclick="showCheckout()">Sepete Git</button>
+                <button id="logout-btn" data-test="logout" onclick="logout()">Çıkış</button>
+            </div>
+        </header>
+
+        <div class="product-grid" id="product-list">
+            <div class="product-card" data-test="item-1">
+                <h3>Mekanik Klavye</h3>
+                <p class="price">1200 TL</p>
+                <button data-test="add-keyboard" onclick="addToCart('Mekanik Klavye', 1200)">Sepete Ekle</button>
+            </div>
+            <div class="product-card" data-test="item-2">
+                <h3>Kablosuz Mouse</h3>
+                <p class="price">650 TL</p>
+                <button data-test="add-mouse" onclick="addToCart('Kablosuz Mouse', 650)">Sepete Ekle</button>
+            </div>
+            <div class="product-card" data-test="item-3">
+                <h3>27 İnç Monitör</h3>
+                <p class="price">5400 TL</p>
+                <button data-test="add-monitor" onclick="addToCart('27 İnç Monitör', 5400)">Sepete Ekle</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-container" class="card hidden">
+        <h2>Sepet Özeti</h2>
+        <ul id="cart-items" data-test="cart-items"></ul>
+        <p>Toplam Tutar: <strong id="total-price" data-test="total-price">0</strong> TL</p>
+        <input type="text" id="customer-name" data-test="customer-name" placeholder="Adınız Soyadınız">
+        <button id="complete-order-btn" data-test="finish-order" onclick="completeOrder()">Siparişi Tamamla</button>
+        <button onclick="backToShop()">Alışverişe Dön</button>
+        <p id="order-status" data-test="order-status" class="success hidden"></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
